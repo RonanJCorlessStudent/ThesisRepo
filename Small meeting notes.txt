@@ -1,0 +1,26 @@
+clifford gates
+mybinder.org
+zx calc .org
+youutube viudieo in the slack
+gates allowed/not allowed in eorror correcting codes.,
+error correcting codes
+quantum spider gates
+
+
+
+
+February 2nd
+
+Example notebook to be sent via slack tonight. ZX calculu
+
+
+cqasm to pyzx question?
+
+
+7 2b 4
+
+
+
+
+
+first question is difference between openqasm and cqasm (qasm)
