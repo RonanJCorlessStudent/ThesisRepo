@@ -1,12 +1,9 @@
-version 1.0
-
-qubits 3 # setting three qubits
-
+version 1.0;
+qubits 3; # setting three qubits
 # start writing your code here
-prep_z q[0,1,2]
-
-X q[0,1]
-Y q[2]
-H q[0]
-CNOT q[0],q[2] # controlled not gate
-measure_all
+prep_z q[0,1,2];
+X q[0,1];
+Z q[2];
+H q[0];
+CNOT q[0],q[2]; # controlled not gate
+measure_all;
