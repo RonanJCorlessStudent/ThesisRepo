@@ -17,10 +17,4 @@ Example notebook to be sent via slack tonight. ZX calculu
 cqasm to pyzx question?
 
 
-7 2b 4
-
-
-
-
-
 first question is difference between openqasm and cqasm (qasm)
