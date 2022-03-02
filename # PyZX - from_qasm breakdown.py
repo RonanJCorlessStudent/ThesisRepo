@@ -1,19 +1,3 @@
-# PyZX - Python library for quantum circuit rewriting 
-#        and optimization using the ZX-calculus
-# Copyright (C) 2018 - Aleks Kissinger and John van de Wetering
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-#    http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 
 import math
 from fractions import Fraction
@@ -70,41 +54,6 @@ class QASMParser(object):
         self.circuit = circ
         return self.circuit
 
-    def parse_custom_gate(self, data: str) -> None:
-        data = data[5:]
-        spec, body = data.split("{",1)
-        if "(" in spec:
-            i = spec.find("(")
-            j = spec.find(")")
-            if spec[i+1:j].strip():
-                raise TypeError("Arguments for custom gates are currently"
-                                " not supported: {}".format(data))
-            spec = spec[:i] + spec[j+1:]
-        spec = spec.strip()
-        if " " in spec:
-            name, args = spec.split(" ",1)
-            name = name.strip()
-            args = args.strip()
-        else:
-            raise TypeError("Custom gate specification doesn't have any "
-                            "arguments: {}".format(data))
-        registers : Dict[str,Tuple[int,int]] = {}
-        qubit_count = 0
-        for a in args.split(","):
-            a = a.strip()
-            if a in registers:
-                raise TypeError("Duplicate variable name: {}".format(data))
-            registers[a] = (qubit_count,1)
-            qubit_count += 1
-
-        body = body[:-1].strip()
-        commands = [s.strip() for s in body.split(";") if s.strip()]
-        circ = Circuit(qubit_count)
-        for c in commands:
-            for g in self.parse_command(c, registers):
-                circ.add_gate(g)
-        self.customgates[name] = circ
-
     def parse_command(self, c: str, registers: Dict[str,Tuple[int,int]]) -> List[Gate]:
         gates: List[Gate] = []
         name, rest = c.split(" ",1)
@@ -112,6 +61,7 @@ class QASMParser(object):
         if name in ("opaque", "if"):
             raise TypeError("Unsupported operation {}".format(c))
         args = [s.strip() for s in rest.split(",") if s.strip()]
+        print(args)
         if name == "qreg":
             regname, sizep = args[0].split("[",1)
             size = int(sizep[:-1])

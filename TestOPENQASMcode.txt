@@ -1,6 +1,6 @@
 OPENQASM 2.0;
 include "qelib1.inc";
-qreg a[3];
+qreg a[3];	
 creg meas[3];
 x a[0]; // here I am creating a gate
 x a[1];
