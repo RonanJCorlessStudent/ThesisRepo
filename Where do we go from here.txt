@@ -1,0 +1,9 @@
+Major changes needed : 	c-x and c-z binary controlled gate functionality -> Do not believe this is native in pyzx, may be wrong, but this may need new gate classes to be created
+			Ry gate functionality
+			Are the PREP and MEASURE commands of importance -> If so how to implement
+			Aliasing -> Many cqasm files do NOT represent their qubits numerically but with aliasing, how to parse this?
+
+
+Minor changes needed :	Fixes needed in multiple places where we are passing 1 integer lists
+			Need to raise proper type errors if there is a failure
+			Is it necessary to hold on to the ".initialize" representation over the circuity in cqasm?
