@@ -1,3 +1,8 @@
 pyzx
 matplotlib
 numpy
+math
+fractions
+typing
+collections
+
